@@ -1,0 +1,42 @@
+# Lightweight configuration for quick experiments
+
+# Data Configuration
+data:
+  image_size: 150  # Smaller size for faster training
+  batch_size: 64   # Larger batch size for speed
+  test_split: 0.2
+  val_split: 0.1
+  random_seed: 42
+
+# Model Configuration
+model:
+  architecture: "custom_cnn"  # Lightweight custom model
+  num_classes: 2
+  dropout_rate: 0.2  # Lower dropout
+  learning_rate: 0.001
+  epochs: 20  # Fewer epochs for quick training
+  patience: 5
+
+# Data Augmentation - Minimal for speed
+augmentation:
+  rotation_range: 10
+  width_shift_range: 0.1
+  height_shift_range: 0.1
+  horizontal_flip: true
+  zoom_range: 0.1
+  brightness_range: [0.9, 1.1]
+
+# Paths
+paths:
+  data_dir: "data/raw"
+  processed_dir: "data/processed"
+  models_dir: "models"
+  logs_dir: "logs"
+  results_dir: "results"
+
+# Training
+training:
+  early_stopping: true
+  model_checkpoint: true
+  reduce_lr_on_plateau: false  # Disable for speed
+  verbose: 1

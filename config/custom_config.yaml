@@ -1,0 +1,46 @@
+# Custom configuration for advanced users
+
+# Data Configuration
+data:
+  image_size: 224  # Standard size for transfer learning
+  batch_size: 16   # Smaller batch size for limited GPU memory
+  test_split: 0.15
+  val_split: 0.15
+  random_seed: 42
+
+# Model Configuration
+model:
+  architecture: "resnet50"  # Use ResNet50 for better performance
+  num_classes: 2
+  dropout_rate: 0.5  # Higher dropout for regularization
+  learning_rate: 0.0001  # Lower learning rate for fine-tuning
+  epochs: 100
+  patience: 15
+
+# Data Augmentation - More aggressive for small datasets
+augmentation:
+  rotation_range: 30
+  width_shift_range: 0.3
+  height_shift_range: 0.3
+  horizontal_flip: true
+  vertical_flip: true
+  zoom_range: 0.3
+  brightness_range: [0.7, 1.3]
+  shear_range: 0.2
+  channel_shift_range: 0.1
+
+# Paths
+paths:
+  data_dir: "data/raw"
+  processed_dir: "data/processed"
+  models_dir: "models"
+  logs_dir: "logs"
+  results_dir: "results"
+
+# Training
+training:
+  early_stopping: true
+  model_checkpoint: true
+  reduce_lr_on_plateau: true
+  verbose: 1
+  class_weight: "balanced"  # Use balanced class weights

@@ -1,0 +1,42 @@
+# Configuration file for Cow Lumpy Disease Detection
+
+# Data Configuration
+data:
+  image_size: 224  # Updated to standard size for transfer learning
+  batch_size: 32
+  test_split: 0.2
+  val_split: 0.1
+  random_seed: 42
+
+# Model Configuration
+model:
+  architecture: "custom_cnn"  # Options: "custom_cnn", "resnet50", "vgg16", "efficientnet"
+  num_classes: 2
+  dropout_rate: 0.3
+  learning_rate: 0.001
+  epochs: 50
+  patience: 10
+
+# Data Augmentation
+augmentation:
+  rotation_range: 20
+  width_shift_range: 0.2
+  height_shift_range: 0.2
+  horizontal_flip: true
+  zoom_range: 0.2
+  brightness_range: [0.8, 1.2]
+
+# Paths
+paths:
+  data_dir: "data/raw"
+  processed_dir: "data/processed"
+  models_dir: "models"
+  logs_dir: "logs"
+  results_dir: "results"
+
+# Training
+training:
+  early_stopping: true
+  model_checkpoint: true
+  reduce_lr_on_plateau: true
+  verbose: 1
